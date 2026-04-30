@@ -1,24 +1,23 @@
 {% set name = "azure-storage-common" %}
-{% set version = "2.1.0" %}
-{% set sha256 = "ccedef5c67227bc4d6670ffd37cec18fb529a1b7c3a5e53e4096eb0cf23dc73f" %}
+{% set version = "1.4.2" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 4ec87c7537d457ec95252e0e46477e2c1ccf33774ffefd05d8544682cb0ae401
 
 build:
-  number: 6
-  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
     - python
     - setuptools
+    - wheel
     - pip
   run:
     - python
@@ -26,20 +25,25 @@ requirements:
     - cryptography
     - python-dateutil
     - requests
-    - azure-storage-nspkg  # [py2k]
 
 test:
   imports:
-    - azure
-    - azure.storage
     - azure.storage.common
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/Azure/azure-storage-python
+  summary: Microsoft Azure Storage Common Client Library for Python
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE.txt
-  summary: 'Microsoft Azure Storage Common Client Library for Python'
+  description: Microsoft Azure Storage Common Client Library for Python
+  dev_url: https://github.com/Azure/azure-storage-python
+  doc_url: https://github.com/Azure/azure-storage-python
+  
 
 extra:
   recipe-maintainers:
