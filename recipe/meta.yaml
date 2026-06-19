@@ -1,5 +1,5 @@
 {% set name = "azure-storage-common" %}
-{% set version = "1.4.2" %}
+{% set version = "2.1.0" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 4ec87c7537d457ec95252e0e46477e2c1ccf33774ffefd05d8544682cb0ae401
+  sha256: ccedef5c67227bc4d6670ffd37cec18fb529a1b7c3a5e53e4096eb0cf23dc73f
 
 build:
   number: 0
